@@ -1,0 +1,15 @@
+.seccion-combos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mcoder {
+  width: 100%;
+}
+
+#container-combos div {
+  padding: 2%;
+  background-color: beige;
+}
