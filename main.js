@@ -27,7 +27,7 @@ const mostrarCombos = () => {
     const boton = document.getElementById(`agregar${combo.id}`);
     boton.addEventListener("click", () => {
       Toastify({
-        text: `¡Agregaste ${combo.nombre} a tu carrito!`,
+        text: `Agregaste ${combo.nombre} a tu carrito!!`,
         duration: 2000,
       }).showToast();
       agregarCarrito(combo.id);
@@ -41,7 +41,10 @@ mostrarCombos();
 const agregarCarrito = (id) => {
   const comboCarrito = combos.find((combo) => combo.id === id);
   carrito.push(comboCarrito);
+
   pagaTotal();
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 };
 
 //Abrir carrito
