@@ -1,7 +1,10 @@
 //Creacion carrito
 
-let carrito = JSON.parse(localStorage.getItem("carrito"));
-[];
+let carrito = [];
+
+carrito = localStorage.getItem("carrito")
+  ? JSON.parse(localStorage.getItem("carrito"))
+  : [];
 
 //HTML
 
@@ -102,6 +105,31 @@ const pagaTotal = () => {
     totalCompra += combo.precio * combo.cantidad;
   });
   total.innerHTML = `total: $${totalCompra}`;
+};
+
+//Comprar
+
+const finalizarCompra = document.getElementById("comprar");
+
+finalizarCompra.addEventListener("click", () => {
+  if (carrito.length === 0) {
+    Toastify({
+      text: `¡Tienes el carrito vacio!`,
+      duration: 2000,
+    }).showToast();
+  } else {
+    Toastify({
+      text: `Muchas gracias por tu compra. ¡Que lo disfrutes!`,
+      duration: 2000,
+    }).showToast();
+    vaciarCarrito();
+  }
+});
+
+const vaciarCarrito = () => {
+  carrito = [];
+  verCarrito();
+  localStorage.clear();
 };
 
 //Storage
